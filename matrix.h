@@ -1,5 +1,6 @@
 #ifndef LABA15_MATRIX_H
 #define LABA15_MATRIX_H
+
 #include <stdio.h>
 #include <malloc.h>
 #include <stdint.h>
@@ -7,11 +8,13 @@
 #include <memory.h>
 #include <stdbool.h>
 #include <stdlib.h>
+
 typedef struct matrix {
     int **values; // элементы матрицы
     int nRows; // количество рядов
     int nCols; // количество столбцов
 } matrix;
+
 typedef struct position {
     int rowIndex;
     int colIndex;
@@ -66,4 +69,5 @@ matrix createMatrixFromArray(const int *a, size_t nRows, size_t nCols);
 matrix *createArrayOfMatrixFromArray(const int *values, size_t nMatrices,
                                      size_t nRows, size_t nCols);
 void swap(int *a, int *b);
+
 #endif //LABA15_MATRIX_H

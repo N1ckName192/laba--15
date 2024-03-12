@@ -1,24 +1,29 @@
-#include "libs/data_structures/matrix/matrix.h"
+#include "matrix.h"
+
 int getSum(int *a, int n) {
     int sum = 0;
     for (int i = 0; i < n; i++)
         sum += a[i];
     return sum;
 }
+
 void test_getMemMatrix1() {
     matrix m = getMemMatrix(0, 0);
     assert(m.nRows == 0 && m.nCols == 0 && m.values != NULL);
     freeMemMatrix(m);
 }
+
 void test_getMemMatrix2() {
     matrix m = getMemMatrix(1, 4);
     assert(m.nRows == 1 && m.nCols == 4 && m.values != NULL);
     freeMemMatrix(m);
 }
+
 void test_getMemMatrix() {
     test_getMemMatrix1();
     test_getMemMatrix2();
 }
+
 void test_getMemArrayOfMatrices1() {
     matrix *ms = getMemArrayOfMatrices(5, 0, 0);
     for (size_t i = 0; i < 5; i++)
@@ -26,6 +31,7 @@ void test_getMemArrayOfMatrices1() {
     assert(ms != NULL);
     freeMemMatrices(ms, 5);
 }
+
 void test_getMemArrayOfMatrices2() {
     matrix *ms = getMemArrayOfMatrices(3, 2, 2);
     for (size_t i = 0; i < 3; i++)
@@ -33,10 +39,12 @@ void test_getMemArrayOfMatrices2() {
     assert(ms != NULL);
     freeMemMatrices(ms, 3);
 }
+
 void test_getMemArrayOfMatrices() {
     test_getMemArrayOfMatrices1();
     test_getMemArrayOfMatrices2();
 }
+
 void test_swapRows1() {
     matrix m1 = createMatrixFromArray((int[]) {
             1, 2, 3
@@ -49,6 +57,7 @@ void test_swapRows1() {
     freeMemMatrix(m1);
     freeMemMatrix(m2);
 }
+
 void test_swapRows2() {
     matrix m1 = createMatrixFromArray((int[]) {
             1, 2, 3,
@@ -63,10 +72,12 @@ void test_swapRows2() {
     freeMemMatrix(m1);
     freeMemMatrix(m2);
 }
+
 void test_swapRows() {
     test_swapRows1();
     test_swapRows2();
 }
+
 void test_swapColumns_oneColumn() {
     matrix m1 = createMatrixFromArray((int[]) {
             1,
@@ -83,6 +94,7 @@ void test_swapColumns_oneColumn() {
     freeMemMatrix(m1);
     freeMemMatrix(m2);
 }
+
 void test_swapColumns_twoColumns() {
     matrix m1 = createMatrixFromArray((int[]) {
             1, 4,
@@ -99,10 +111,12 @@ void test_swapColumns_twoColumns() {
     freeMemMatrix(m1);
     freeMemMatrix(m2);
 }
+
 void test_swapColumns() {
     test_swapColumns_oneColumn();
     test_swapColumns_twoColumns();
 }
+
 void test_insertionSortRowsMatrixByRowCriteria1() {
     matrix m1 = createMatrixFromArray((int[]) {
             1, 2, 3,
@@ -115,6 +129,7 @@ void test_insertionSortRowsMatrixByRowCriteria1() {
     freeMemMatrix(m1);
     freeMemMatrix(m2);
 }
+
 void test_insertionSortRowsMatrixByRowCriteria2() {
     matrix m1 = createMatrixFromArray((int[]) {
             3, 3, 3,
@@ -131,10 +146,12 @@ void test_insertionSortRowsMatrixByRowCriteria2() {
     freeMemMatrix(m1);
     freeMemMatrix(m2);
 }
+
 void test_insertionSortRowsMatrixByRowCriteria() {
     test_insertionSortRowsMatrixByRowCriteria1();
     test_insertionSortRowsMatrixByRowCriteria2();
 }
+
 void test_insertionSortColsMatrixByColCriteria1() {
     matrix m1 = createMatrixFromArray((int[]) {
             1,
@@ -151,6 +168,7 @@ void test_insertionSortColsMatrixByColCriteria1() {
     freeMemMatrix(m1);
     freeMemMatrix(m2);
 }
+
 void test_insertionSortColsMatrixByColCriteria2() {
     matrix m1 = createMatrixFromArray((int[]) {
             3, 1, 2,
@@ -167,6 +185,7 @@ void test_insertionSortColsMatrixByColCriteria2() {
     freeMemMatrix(m1);
     freeMemMatrix(m2);
 }
+
 void test_insertionSortColsMatrixByColCriteria() {
     test_insertionSortColsMatrixByColCriteria1();
     test_insertionSortColsMatrixByColCriteria2();
@@ -180,6 +199,7 @@ void test_isSquareMatrix1() {
     assert(isSquareMatrix(m));
     freeMemMatrix(m);
 }
+
 void test_isSquareMatrix2() {
     matrix m = createMatrixFromArray((int[]) {
             1, 1, 1,
@@ -188,10 +208,12 @@ void test_isSquareMatrix2() {
     assert(!isSquareMatrix(m));
     freeMemMatrix(m);
 }
+
 void test_isSquareMatrix() {
     test_isSquareMatrix1();
     test_isSquareMatrix2();
 }
+
 void test_areTwoMatricesEqual1() {
     matrix m1 = createMatrixFromArray((int[]) {
             1, 2, 3,
@@ -207,6 +229,7 @@ void test_areTwoMatricesEqual1() {
     freeMemMatrix(m1);
     freeMemMatrix(m2);
 }
+
 void test_areTwoMatricesEqual2() {
     matrix m1 = createMatrixFromArray((int[]) {
             1, 2, 3,
@@ -222,10 +245,12 @@ void test_areTwoMatricesEqual2() {
     freeMemMatrix(m1);
     freeMemMatrix(m2);
 }
+
 void test_areTwoMatricesEqual() {
     test_areTwoMatricesEqual1();
     test_areTwoMatricesEqual2();
 }
+
 void test_isEMatrix1() {
     matrix m = createMatrixFromArray((int[]) {
             1, 0, 0,
@@ -235,6 +260,7 @@ void test_isEMatrix1() {
     assert(isEMatrix(m));
     freeMemMatrix(m);
 }
+
 void test_isEMatrix2() {
     matrix m = createMatrixFromArray((int[]) {
             1, 0, 3,
@@ -244,10 +270,12 @@ void test_isEMatrix2() {
     assert(!isEMatrix(m));
     freeMemMatrix(m);
 }
+
 void test_isEMatrix() {
     test_isEMatrix1();
     test_isEMatrix2();
 }
+
 void test_isSymmetricMatrix1() {
     matrix m = createMatrixFromArray((int[]) {
             1, 2, 3,
@@ -257,6 +285,7 @@ void test_isSymmetricMatrix1() {
     assert(isSymmetricMatrix(m));
     freeMemMatrix(m);
 }
+
 void test_isSymmetricMatrix2() {
     matrix m = createMatrixFromArray((int[]) {
             5, 4, 3,
@@ -266,10 +295,12 @@ void test_isSymmetricMatrix2() {
     assert(!isSymmetricMatrix(m));
     freeMemMatrix(m);
 }
+
 void test_isSymmetricMatrix() {
     test_isSymmetricMatrix1();
     test_isSymmetricMatrix2();
 }
+
 void test_transposeSquareMatrix1() {
     matrix m1 = createMatrixFromArray((int[]) {
             1
@@ -282,6 +313,7 @@ void test_transposeSquareMatrix1() {
     freeMemMatrix(m1);
     freeMemMatrix(m2);
 }
+
 void test_transposeSquareMatrix2() {
     matrix m1 = createMatrixFromArray((int[]) {
             1, 2, 3,
@@ -298,10 +330,12 @@ void test_transposeSquareMatrix2() {
     freeMemMatrix(m1);
     freeMemMatrix(m2);
 }
+
 void test_transposeSquareMatrix() {
     test_transposeSquareMatrix1();
     test_transposeSquareMatrix2();
 }
+
 void test_getMinValuePos1() {
     matrix m = createMatrixFromArray((int[]) {
             2
@@ -310,6 +344,7 @@ void test_getMinValuePos1() {
     assert(p.rowIndex == 0 && p.colIndex == 0);
     freeMemMatrix(m);
 }
+
 void test_getMinValuePos2() {
     matrix m = createMatrixFromArray((int[]) {
             8, 2, 3,
@@ -320,10 +355,12 @@ void test_getMinValuePos2() {
     assert(p.rowIndex == 1 && p.colIndex == 2);
     freeMemMatrix(m);
 }
+
 void test_getMinValuePos() {
     test_getMinValuePos1();
     test_getMinValuePos2();
 }
+
 void test_getMaxValuePos1() {
     matrix m = createMatrixFromArray((int[]) {
             41
@@ -332,6 +369,7 @@ void test_getMaxValuePos1() {
     assert(p.rowIndex == 0 && p.colIndex == 0);
     freeMemMatrix(m);
 }
+
 void test_getMaxValuePos2() {
     matrix m = createMatrixFromArray((int[]) {
             7, 4, 1,
@@ -342,10 +380,12 @@ void test_getMaxValuePos2() {
     assert(p.rowIndex == 2 && p.colIndex == 2);
     freeMemMatrix(m);
 }
+
 void test_getMaxValuePos() {
     test_getMaxValuePos1();
     test_getMaxValuePos2();
 }
+
 void test() {
     test_getMemMatrix();
     test_getMemArrayOfMatrices();
@@ -361,6 +401,7 @@ void test() {
     test_getMinValuePos();
     test_getMaxValuePos();
 }
+
 int main() {
     test();
 }

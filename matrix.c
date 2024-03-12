@@ -18,6 +18,7 @@ typedef struct position {
     int rowIndex;
     int colIndex;
 } position;
+
 //размещает в динамической памяти матрицу размером nRows на nCols
 matrix getMemMatrix(int nRows, int nCols);
 //размещает в динамической памяти массив из nMatrices матриц размером nRowsна nCols
